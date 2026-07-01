@@ -1,0 +1,11 @@
+SetID,Category,Name,Email,Password,ConfirmPassword,ExpectedResult,Notes
+TD-01,Valid User,Pratap,Pratap01@test.com,Pratap@1234,Pratap@1234,201 Created,Standard valid registration
+TD-02,Valid User,Kumar Raj,Kumarraj1@test.com,Secure123@Pass,Secure123@Pass,201 Created,Standard valid registration
+TD-03,Duplicate Email,Harshith G G,Harshithgg@test.com,Harsh22@Pass,Harsh22@Pass,409 Conflict,Email already used by TD-01
+TD-04,Duplicate Email (case variant),Harshith G,harshithgg@TEST.com,Harshith@123,Harshith@123,409 Conflict,Should match TD-01 case-insensitively after lowercasing
+TD-05,Invalid Email Format,Prateek,prateek.lee.test.com,Pass@Prateek00,Pass@Prateek00,400 Bad Request,Missing @ symbol
+TD-06,Invalid Email Format,Dheeraj,dheeraj@@test.com,Dhee@123pass,Dhee@123Pass,400 Bad Request,Double @ symbol
+TD-07,Weak Password,Sachin Kumar,Sachin2kumar@test.com,sachi,sachi,400 Bad Request,Password below 12 characters
+TD-08,Weak Password,Darshan,darshan.patel@test.com,darshanpatil,darshanpatil,400 Bad Request,Password missing numbers
+TD-09,Special/Unicode Characters,Abhi$hek,me.abhihek@test.com,Abh!P√ssw√rd@2026,Abh!P√ssw√rd@2026,201 Created or 400 depending on rule,Tests Unicode handling in name and password
+TD-10,Leading/Trailing Spaces,  Rudresh Nayak  , rudra.nayak@test.com ,Rudresh@123,Rudresh@123,201 Created (trimmed) or 400,Tests whitespace trimming behavior
